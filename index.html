@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>FTC KBE · The, future of, CAD.</title>
+<title>FTC KBE · This is the future of CAD</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Unbounded:wght@300;400;500&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
@@ -144,9 +144,9 @@ body.submerged #mono-veil{backdrop-filter:saturate(0) blur(.4px);-webkit-backdro
   <div class="hero-c">
     <div class="pill"><span class="dp"></span>Knowledge Based Engineering · Live</div>
     <h1>
-      <span class="hl">Glass,</span>
-      <span class="hl"><span class="amber-w">geometry</span>,</span>
-      <span class="hl">governed.</span>
+      <span class="hl">This is</span>
+      <span class="hl">the future</span>
+      <span class="hl">of <span class="amber-w">CAD</span>.</span>
     </h1>
     <p class="hero-sub">Parametric chassis configurator for FTC Robotics. Twenty-one parameters. Sixteen rule checks. Seventeen derived variables. One descent through glass and light.</p>
   </div>
@@ -283,19 +283,14 @@ function buildRail(len){const H=12,D=8;const w=document.createElement('div');w.s
   window._V=V;
 })();
 
-/* =========================================
-   DRAGGABLE DNA + CONTINUOUS SPIN
-   — mouse/touch drag rotates on Y
-   — idle: gentle constant velocity
-   ========================================= */
 (function(){
   const vp=document.getElementById('helix-vp');
   const dna=document.getElementById('dna-spin');
   const panel=document.getElementById('panel-layer');
-  let rot=0, vel=0.25;        // deg, deg/frame (at ~60fps this = 15deg/s ≈ 24s per turn)
+  let rot=0, vel=0.25;
   const IDLE_VEL=0.25;
   let dragging=false, lastX=0, lastT=0;
-  const SENS=0.45;             // degrees per pixel
+  const SENS=0.45;
   function apply(){
     dna.style.transform=`rotateY(${rot}deg)`;
     panel.style.transform=`rotateY(${rot}deg)`;
@@ -303,7 +298,6 @@ function buildRail(len){const H=12,D=8;const w=document.createElement('div');w.s
   function tick(){
     if(!dragging) rot += vel;
     apply();
-    // decay velocity toward idle
     if(!dragging){
       if(Math.abs(vel-IDLE_VEL) > 0.005) vel += (IDLE_VEL - vel) * 0.02;
     }
@@ -316,7 +310,7 @@ function buildRail(len){const H=12,D=8;const w=document.createElement('div');w.s
     const dx=x-lastX;
     const dt=Math.max(1, performance.now()-lastT);
     rot += dx * SENS;
-    vel = (dx * SENS) / (dt/16.67);    // carry velocity when released
+    vel = (dx * SENS) / (dt/16.67);
     lastX=x; lastT=performance.now();
   }
   function endDrag(){dragging=false;vp.classList.remove('dragging');}
@@ -328,9 +322,6 @@ function buildRail(len){const H=12,D=8;const w=document.createElement('div');w.s
   vp.addEventListener('touchend',endDrag);
 })();
 
-/* =========================================
-   SCROLL — Y descent + break trigger
-   ========================================= */
 (function(){
   const stage=document.getElementById('helix-stage');
   const wrap=document.getElementById('hscene-wrap');
